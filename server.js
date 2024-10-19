@@ -1,8 +1,11 @@
 const express = require("express");
 const getFbVideoInfo = require("fb-downloader-scrapper");
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/video-info", async (req, res) => {
     const videoUrl = req.query.url; // Get the video URL from the query parameters
